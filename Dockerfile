@@ -2,6 +2,9 @@ ARG GLUE_VERSION
 
 FROM  public.ecr.aws/glue/aws-glue-libs:glue_libs_${GLUE_VERSION}_image_01
 
+LABEL org.opencontainers.image.source="https://github.com/n1ngu/docker-aws-glue-libs"
+LABEL org.opencontainers.image.description="Like https://gallery.ecr.aws/glue/aws-glue-libs but better"
+
 # Upgrade to glibc 2.28
 # Cherrypick /**/lib*/ and /sbin files from fedora:29 glibc package
 # (See `docker run --rm -ti fedora:29 rpm -ql glibc`)

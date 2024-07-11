@@ -10,3 +10,4 @@ Namely
 - spark xml support
 - aws-glue-libs installation metadata
 - no tls overhead in entrypoint
+- onbuild: change glue_user uid

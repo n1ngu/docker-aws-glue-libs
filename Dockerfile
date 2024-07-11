@@ -84,3 +84,11 @@ ENV DISABLE_SSL=yesss
 
 ENTRYPOINT [ "bash", "-l", "-c", "exec $0 $@"]
 CMD ["bash"]
+
+ONBUILD ARG UID=1000
+ONBUILD ARG GID=${UID}
+ONBUILD USER root
+ONBUILD RUN groupadd --gid ${GID} glue
+ONBUILD RUN usermod --uid ${UID} --gid glue glue_user
+ONBUILD RUN find /tmp/ -maxdepth 1 -uid 10000 -exec chown --recursive --verbose glue_user:glue '{}' ';'
+ONBUILD USER glue_user
